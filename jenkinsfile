@@ -2,9 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+
+        stage('check out'){
+            steps{
+            git url: 'https://github.com/Varshar21-07/devWorkshop', branch:'main'
+        }
+        }
+
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'build'
+            }
+        }
+
+        stage('test'){
+           steps {
+                echo 'test'
+            }
+        }
+
+        stage('deploy'){
+           steps {
+                echo 'deploy'
             }
         }
     }
