@@ -1,0 +1,28 @@
+pipeline{
+agent any 
+tools{
+    maven 'Maven' 
+}
+stages{
+    stage('Build'){
+      steps{
+        sh 'mnv clean package'
+      }
+    }
+
+    stage('Test'){
+        step{
+             sh 'mnv test'
+        }
+    }
+
+    stage('Run JAR'){
+        steps{
+            script {
+                def output =sh(script:'java-jar target/simple-java-project-1.0-SNAPSHOT.jar',returnStdout: true).trim()
+                 echo "Output from JAR: ${output}"
+            }
+        }
+    }
+}
+}
