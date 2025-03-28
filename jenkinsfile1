@@ -11,7 +11,7 @@ stages{
     }
 
     stage('Test'){
-        step{
+        steps{
              sh 'mnv test'
         }
     }
